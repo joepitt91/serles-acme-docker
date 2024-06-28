@@ -10,7 +10,9 @@ services:
       - CA_NAME=Org Name CA
       - CERT_PROFILE=ACMECertCert
       - ENTITY_PROFILE=ACMEEntityProfile
-    image: joepitt91/serles-acme:1.1.0
+    image: ghcr.io/joepitt91/serles-acme-docker:main
+    # or
+    # image: joepitt91/serles-acme:latest
     ports:
       - 127.0.0.1:8000:8000
     restart: unless-stopped
