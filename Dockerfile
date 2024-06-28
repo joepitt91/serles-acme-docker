@@ -11,7 +11,7 @@ ENV ALLOWED_IPS=0.0.0.0/0,::/0 BLOCKED_IPS=0.0.0.0/32 CA_NAME=ManagementCA \
 EXPOSE 8000
 LABEL org.opencontainers.image.authors="Joe Pitt <Joe.Pitt@joepitt.co.uk>" \
     org.opencontainers.image.base.name="hub.docker.com/_/python:3.12" \
-    org.opencontainers.image.description="Serles is a tiny ACME-CA implementation to enhance your existing Certificate Authority infrastructure." \
+    org.opencontainers.image.description="Docker wrapper of serles-acme ACME server for EJBCA." \
     org.opencontainers.image.licenses="GPL-3.0-only" \
     org.opencontainers.image.ref.name="serles-acme" \
     org.opencontainers.image.source="https://github.com/joepitt91/serles-acme-docker" \
