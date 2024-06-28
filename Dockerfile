@@ -22,9 +22,10 @@ LABEL org.opencontainers.image.authors="Joe Pitt <Joe.Pitt@joepitt.co.uk>" \
 VOLUME [ "/etc/serles" ]
 COPY configure.py /usr/local/sbin/configure.py
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY healthcheck.py /usr/local/bin/healthcheck.py
 COPY gunicorn_config.py /opt/serles/gunicorn_config.py
 ENTRYPOINT [ "sh", "/usr/local/bin/entrypoint.sh" ]
-HEALTHCHECK --timeout=3s CMD [ "curl", "-f", "http://localhost:8000/" ]
+HEALTHCHECK --timeout=3s CMD [ "/opt/serles/bin/python3", "/usr/local/bin/healthcheck.py" ]
 RUN python3 -m venv /opt/serles &&\
     . /opt/serles/bin/activate &&\
     python3 -m pip install --quiet --no-cache-dir --upgrade pip setuptools &&\
