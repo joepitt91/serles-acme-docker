@@ -35,8 +35,9 @@ To get started:
     overriding any Environment Variables (see below).
 5. Bring the `serles-acme` server up: `docker compose up -d serles-acme`.
 6. Check the logs to ensure everything is OK: `docker compose logs serles-acme -f`.
-7. Stand up an HTTPS reverse proxy in front of `serles-acme` with a trusted certificate.
-8. Issue certificates using `certbot --server https://reverse.proxy.tld/directory ...`.
+7. After 30-60 seconds `docker compose ps` should also report a **Healthy** status.
+8. Stand up an HTTPS reverse proxy in front of `serles-acme` with a trusted certificate.
+9. Issue certificates using `certbot --server https://reverse.proxy.tld/directory ...`.
     * After initial setup, the reverse proxy can use the same to maintain its own certificate.
     * If the reverse proxy is using an internal certificate then the snapd and Docker versions of
         `certbot` may fail to validate it as these use bundled CA Trust Lists.
