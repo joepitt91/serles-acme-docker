@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: 2024 Joe Pitt
+#
+# SPDX-License-Identifier: GPL-3.0-only
+
+name: DockerHub Page
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  run:
+    name: DockerHub Page
+    runs-on: ubuntu-latest
+    steps:
+      # Environment Setup
+      - id: checkout
+        name: Checkout Project
+        uses: actions/checkout@v4
+      - id: update
+        name: Update
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ vars.DOCKERHUB_USERNAME }}/serles-acme
+          short-description: Docker wrapper of serles-acme ACME server for EJBCA.
+          readme-filepath: README.md
