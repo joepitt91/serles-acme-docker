@@ -30,8 +30,9 @@ To get started:
 3. Save the client certificate to `./serles-acme/client.pem`:
     1. `mkdir -p ./serles-acme`
     2. `cat ejbca/cert/acme.crt ejbca/csr/privkey.pem > serles-acme/client.pem`
-4. Add the `serles-acme` service as shown in [docker-compose.yml](docker-compose.yml), overriding
-    any Environment Variables (see below).
+4. Add the `serles-acme` service as shown in
+    [docker-compose.yml](https://github.com/joepitt91/serles-acme-docker/blob/main/docker-compose.yml),
+    overriding any Environment Variables (see below).
 5. Bring the `serles-acme` server up: `docker compose up -d serles-acme`.
 6. Check the logs to ensure everything is OK: `docker compose logs serles-acme -f`.
 7. Stand up an HTTPS reverse proxy in front of `serles-acme` with a trusted certificate.
