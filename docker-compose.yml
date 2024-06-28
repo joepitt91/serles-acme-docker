@@ -6,6 +6,7 @@
 services:
   # ejbca and DB services here
   serles-acme:
+    container_name: serles-acme
     environment:
       - CA_NAME=Org Name CA
       - CERT_PROFILE=ACMECertCert
