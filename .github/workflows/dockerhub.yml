@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 
-name: DockerHub Page
+name: DockerHub
 on:
   push:
     branches:
@@ -10,13 +10,30 @@ on:
   workflow_dispatch:
 jobs:
   run:
-    name: DockerHub Page
+    name: DockerHub
     runs-on: ubuntu-latest
     steps:
       # Environment Setup
       - id: checkout
         name: Checkout Project
         uses: actions/checkout@v4
+      - id: docker-login
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+      - id: setup-buildx
+        name: Setup Docker buildx Environment
+        uses: docker/setup-buildx-action@v3
+      - id: build
+        name: Build
+        run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/serles-acme:latest -t ${{ vars.DOCKERHUB_USERNAME }}/serles-acme:1.1.0 .
+      - id: push
+        name: Push
+        run: |
+          docker image push ${{ vars.DOCKERHUB_USERNAME }}/serles-acme:1.1.0
+          docker image push ${{ vars.DOCKERHUB_USERNAME }}/serles-acme:latest
       - id: update
         name: Update
         uses: peter-evans/dockerhub-description@v4
