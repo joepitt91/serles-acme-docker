@@ -9,11 +9,16 @@ ENV ALLOWED_IPS=0.0.0.0/0,::/0 BLOCKED_IPS=0.0.0.0/32 CA_NAME=ManagementCA \
     MYSQL_DATABASE=serles MYSQL_HOST=mysql MYSQL_PASSWORD=changeme MYSQL_PORT=3306 \
     MYSQL_USERNAME=serles USE_MYSQL=false VERIFY_PTR=false
 EXPOSE 8000
-LABEL org.opencontainers.image.title="serles-acme" org.opencontainers.image.version="1.1.0" \
-org.opencontainers.image.ref.name="serles-acme" \
-org.opencontainers.image.description="Serles is a tiny ACME-CA implementation to enhance your existing Certificate Authority infrastructure." \
-org.opencontainers.image.authors="Joe Pitt <Joe.Pitt@joepitt.co.uk>" \
-org.opencontainers.image.base.name="hub.docker.com/_/python:3.12"
+LABEL org.opencontainers.image.authors="Joe Pitt <Joe.Pitt@joepitt.co.uk>" \
+    org.opencontainers.image.base.name="hub.docker.com/_/python:3.12" \
+    org.opencontainers.image.description="Serles is a tiny ACME-CA implementation to enhance your existing Certificate Authority infrastructure." \
+    org.opencontainers.image.licenses="GPL-3.0-only" \
+    org.opencontainers.image.ref.name="serles-acme" \
+    org.opencontainers.image.source="https://github.com/joepitt91/serles-acme-docker" \
+    org.opencontainers.image.title="serles-acme" \
+    org.opencontainers.image.version="1.1.0" \
+    org.opencontainers.image.url="https://github.com/joepitt91/serles-acme-docker"
+
 VOLUME [ "/etc/serles" ]
 COPY configure.py /usr/local/sbin/configure.py
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
