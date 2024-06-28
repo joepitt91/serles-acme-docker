@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 
-FROM python:3.12
+FROM python:3.12-slim
 ENV ALLOWED_IPS=0.0.0.0/0,::/0 BLOCKED_IPS=0.0.0.0/32 CA_NAME=ManagementCA \
     CERT_PROFILE=SERVER EJBCA_API_VERIFY=false \
     EJBCA_API=https://ejbca:8443/ejbca/ejbcaws/ejbcaws?wsdl ENTITY_PROFILE=EMPTY \
