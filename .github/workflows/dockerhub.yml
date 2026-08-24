@@ -16,7 +16,7 @@ jobs:
       # Environment Setup
       - id: checkout
         name: Checkout Project
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - id: docker-login
         name: Login to Docker Hub
         uses: docker/login-action@v3
