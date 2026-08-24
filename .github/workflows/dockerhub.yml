@@ -36,7 +36,7 @@ jobs:
           docker image push ${{ vars.DOCKERHUB_USERNAME }}/serles-acme:latest
       - id: update
         name: Update
-        uses: peter-evans/dockerhub-description@v4
+        uses: peter-evans/dockerhub-description@v5
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
