@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 
-FROM python:3.12-slim
+FROM python:3.14-slim
 ENV ALLOWED_IPS=0.0.0.0/0,::/0 BLOCKED_IPS=0.0.0.0/32 CA_NAME=ManagementCA \
     CERT_PROFILE=SERVER EJBCA_API_VERIFY=false \
     EJBCA_API=https://ejbca:8443/ejbca/ejbcaws/ejbcaws?wsdl ENTITY_PROFILE=EMPTY \
@@ -16,7 +16,7 @@ LABEL org.opencontainers.image.authors="Joe Pitt <Joe.Pitt@joepitt.co.uk>" \
     org.opencontainers.image.ref.name="serles-acme" \
     org.opencontainers.image.source="https://github.com/joepitt91/serles-acme-docker" \
     org.opencontainers.image.title="serles-acme" \
-    org.opencontainers.image.version="1.1.0" \
+    org.opencontainers.image.version="1.3.0" \
     org.opencontainers.image.url="https://github.com/joepitt91/serles-acme-docker"
 
 VOLUME [ "/etc/serles" ]
@@ -29,4 +29,4 @@ HEALTHCHECK --timeout=3s CMD [ "/opt/serles/bin/python3", "/usr/local/bin/health
 RUN python3 -m venv /opt/serles &&\
     . /opt/serles/bin/activate &&\
     python3 -m pip install --quiet --no-cache-dir --upgrade pip setuptools &&\
-    python3 -m pip install --quiet --no-cache-dir pymysql serles-acme==1.1.0
+    python3 -m pip install --quiet --no-cache-dir pymysql serles-acme==1.3.0
